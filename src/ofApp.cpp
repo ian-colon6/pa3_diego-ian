@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    this->levels = 5;
 }
 
 //--------------------------------------------------------------
@@ -17,11 +18,11 @@ void ofApp::draw(){
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
     if(mode == '1'){
-        drawMode1(ofGetWidth()/2, ofGetHeight()/2, 4);
+        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
     }else if(mode == '2'){
-        drawMode2(200, 10, ofGetWidth()/2, ofGetHeight()-50, 30);
+        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
     }else if(mode == '3') {
-        drawMode3(ofGetWidth() / 3, 10, ofGetHeight() / 2, 10);
+        drawMode3(ofGetWidth() / 3, 10, ofGetHeight() / 2, this -> levels);
 
     }
 }
@@ -83,6 +84,12 @@ void ofApp::keyPressed(int key){
             break;
         case '4':
             mode = '4';
+            break;
+        case '=':
+            if(this -> levels <= 20) this->levels++;
+            break;
+        case '-':
+            if(this->levels>= 1) this->levels--;
             break;
     }
 }
