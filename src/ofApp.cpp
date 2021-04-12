@@ -27,6 +27,7 @@ void ofApp::draw(){
     }
 }
 void ofApp::drawMode1(int x, int y, int n){
+    levelsColor(n);
     if(n!=0){
         ofDrawCircle(x, y, 100);
         drawMode1(x+100, y, n-1);
@@ -36,6 +37,7 @@ void ofApp::drawMode1(int x, int y, int n){
     }
 }
 void ofApp::drawMode2(int length, int n, int x, int y, int d){
+    levelsColor(n);
     if(n != 0){
         int middleY = y-length;
         int leftBranchX = x -length*cos(PI/180*d);
@@ -54,6 +56,7 @@ void ofApp::drawMode2(int length, int n, int x, int y, int d){
 }
 
 void ofApp::drawMode3(float x, float y, float size, int n){
+    levelsColor(n);
     if(n == 0) {
         return;
     }
@@ -68,6 +71,13 @@ void ofApp::drawMode3(float x, float y, float size, int n){
     drawMode3((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
 }
 
+void ofApp::levelsColor(int l){
+    if(l%5 == 0)ofSetColor(255,255,255);
+    else if(l%5 == 1)ofSetColor(255,0,0);
+    else if(l%5 == 2)ofSetColor(0,255,0);
+    else if(l%5 == 3)ofSetColor(0,0,255);
+    else if(l%5 == 4)ofSetColor(255,255,0);
+}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
