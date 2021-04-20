@@ -3,6 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     this->levels = 5;
+    isActivated_1 = false;
+	isActivated_2 = false;
+	isActivated_3 = false;
 }
 
 //--------------------------------------------------------------
@@ -17,16 +20,44 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
-    if(mode == '1'){
+    if(isActivated_1 && !isActivated_2 && !isActivated_3){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
-    }else if(mode == '2'){
-        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
-    }else if(mode == '3') {
-        drawMode3(ofGetWidth() / 3, 10, ofGetHeight() / 2, this -> levels);
 
     }
+    else if(isActivated_2 && !isActivated_1 && !isActivated_3){
+        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
+        
+    }
+    else if(isActivated_3 && !isActivated_1 && !isActivated_2) {
+        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
+
+    }
+    else if(isActivated_1 && isActivated_2 && !isActivated_3){
+        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
+        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
+    }
+    else if(isActivated_1 && isActivated_3 && !isActivated_2){
+        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
+        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
+    }
+    else if(isActivated_2 && isActivated_3 && !isActivated_1){
+        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
+        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
+    }
+    else if(isActivated_1 && isActivated_2 && isActivated_3){
+        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this->levels);
+        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
+        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
+    }
+    else{
+        ofSetColor(256);
+        ofDrawBitmapString("Press any number from 1-3", ofGetWidth()/2 -100, ofGetHeight()/2);
+    }
+    
+        
 }
 void ofApp::drawMode1(int x, int y, int n){
+
     levelsColor(n);
     if(n!=0){
         ofDrawCircle(x, y, 100);
@@ -37,6 +68,7 @@ void ofApp::drawMode1(int x, int y, int n){
     }
 }
 void ofApp::drawMode2(int length, int n, int x, int y, int d){
+
     levelsColor(n);
     if(n != 0){
         int middleY = y-length;
@@ -52,10 +84,10 @@ void ofApp::drawMode2(int length, int n, int x, int y, int d){
         drawMode2(length/2, n-1,rightBranchX,rightBranchY, 30);
         drawMode2(length/2,n-1,leftBranchX,leftBranchY, 30);
     }
-    
 }
 
 void ofApp::drawMode3(float x, float y, float size, int n){
+
     levelsColor(n);
     if(n == 0) {
         return;
@@ -85,13 +117,29 @@ void ofApp::keyPressed(int key){
     // This method is called automatically when any key is pressed
     switch(key){
         case '1':
-            mode = '1';
+
+            if(isActivated_1 == false){
+                isActivated_1 = true;
+                mode = '1';
+            }else{
+                isActivated_1 = false;
+            }
             break;
         case '2':
-            mode = '2';
+            if(isActivated_2 == false){
+                isActivated_2 = true;
+                mode = '2';
+            }else{
+                isActivated_2 = false;
+            }
             break;
         case '3':
-            mode = '3';
+            if(isActivated_3 == false){
+                isActivated_3 = true;
+                mode = '3';
+            }else{
+                isActivated_3 = false;
+            }
             break;
         case '4':
             mode = '4';

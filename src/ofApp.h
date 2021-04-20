@@ -27,4 +27,7 @@ class ofApp : public ofBaseApp{
 	private:
 		char mode = '1';
 		int levels;
+		bool isActivated_1;
+		bool isActivated_2;
+		bool isActivated_3;
 };
