@@ -10,7 +10,7 @@ class drawMode2 : public FractalMode {
     public:
         void setActive(bool activ);
         bool getActive();
-        void Draw_2(int, int, int, int, int);
+        void draw(int, int, int, int, int);
         void levelsColor(int);
 
 };

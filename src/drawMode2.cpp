@@ -21,7 +21,7 @@ void drawMode2::levelsColor(int levels){
     else if(levels%5 == 4)ofSetColor(255,255,0);
 }
 
-void drawMode2::Draw_2(int length, int n, int x, int y, int d){
+void drawMode2::draw(int length, int n, int x, int y, int d){
 
     levelsColor(n);
     if(n != 0){
@@ -35,7 +35,7 @@ void drawMode2::Draw_2(int length, int n, int x, int y, int d){
         ofDrawLine(x, y-length, rightBranchX, rightBranchY);
         ofDrawLine(x,y-length, leftBranchX, leftBranchY);
 
-        Draw_2(length/2, n-1,rightBranchX,rightBranchY, 30);
-        Draw_2(length/2,n-1,leftBranchX,leftBranchY, 30);
+        draw(length/2, n-1,rightBranchX,rightBranchY, 30);
+        draw(length/2,n-1,leftBranchX,leftBranchY, 30);
     }
 }

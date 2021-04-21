@@ -20,14 +20,14 @@ void drawMode1::levelsColor(int l){
     else if(l%5 == 4)ofSetColor(255,255,0);
 }
 
-void drawMode1::Draw_1(int x, int y, int levels){
+void drawMode1::draw(int x, int y, int levels){
 
     levelsColor(levels);
     if(levels!=0){
         ofDrawCircle(x, y, 100);
-        Draw_1(x+100, y, levels-1);
-        Draw_1(x-100, y, levels-1);
-        Draw_1(x, y+100, levels-1);
-        Draw_1(x, y-100, levels-1);
+        draw(x+100, y, levels-1);
+        draw(x-100, y, levels-1);
+        draw(x, y+100, levels-1);
+        draw(x, y-100, levels-1);
     }
 }
