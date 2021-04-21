@@ -1,6 +1,7 @@
 #pragma once
 #include<cmath>
-
+#include <vector>
+#include "FractalMode.h"
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
@@ -30,4 +31,5 @@ class ofApp : public ofBaseApp{
 		bool isActivated_1;
 		bool isActivated_2;
 		bool isActivated_3;
+		std::vector<FractalMode*> Frac_modes;
 };
