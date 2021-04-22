@@ -60,7 +60,7 @@ void ofApp::drawMode1(int x, int y, int n){
 
     levelsColor(n);
     if(n!=0){
-        ofDrawCircle(x, y, 100);
+        ofDrawCircle(x, y, n * 20);
         drawMode1(x+100, y, n-1);
         drawMode1(x-100, y, n-1);
         drawMode1(x, y+100, n-1);
@@ -105,10 +105,10 @@ void ofApp::drawMode3(float x, float y, float size, int n){
 }
 
 void ofApp::levelsColor(int l){
-    if(l%5 == 0)ofSetColor(255,255,255);
+    if(l%5 == 0)ofSetColor(190,150,255);
     else if(l%5 == 1)ofSetColor(255,0,0);
     else if(l%5 == 2)ofSetColor(0,255,0);
-    else if(l%5 == 3)ofSetColor(0,0,255);
+    else if(l%5 == 3)ofSetColor(50,255,255);
     else if(l%5 == 4)ofSetColor(255,255,0);
 }
 
