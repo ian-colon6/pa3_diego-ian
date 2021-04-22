@@ -20,36 +20,19 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
-    if(isActivated_1 && !isActivated_2 && !isActivated_3){
+    if(isActivated_1){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
 
     }
-    else if(isActivated_2 && !isActivated_1 && !isActivated_3){
+    if(isActivated_2){
         drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
         
     }
-    else if(isActivated_3 && !isActivated_1 && !isActivated_2) {
+    if(isActivated_3) {
         drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
 
     }
-    else if(isActivated_1 && isActivated_2 && !isActivated_3){
-        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
-        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
-    }
-    else if(isActivated_1 && isActivated_3 && !isActivated_2){
-        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
-        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
-    }
-    else if(isActivated_2 && isActivated_3 && !isActivated_1){
-        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
-        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
-    }
-    else if(isActivated_1 && isActivated_2 && isActivated_3){
-        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this->levels);
-        drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
-        drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
-    }
-    else{
+    if(!isActivated_1 && !isActivated_2 && !isActivated_3) {
         ofSetColor(256);
         ofDrawBitmapString("Press any number from 1-3", ofGetWidth()/2 -100, ofGetHeight()/2);
     }
@@ -117,32 +100,16 @@ void ofApp::keyPressed(int key){
     // This method is called automatically when any key is pressed
     switch(key){
         case '1':
-
-            if(isActivated_1 == false){
-                isActivated_1 = true;
-                mode = '1';
-            }else{
-                isActivated_1 = false;
-            }
+            if(!isActivated_1)isActivated_1 = true;
+            else isActivated_1 = false;
             break;
         case '2':
-            if(isActivated_2 == false){
-                isActivated_2 = true;
-                mode = '2';
-            }else{
-                isActivated_2 = false;
-            }
+            if(!isActivated_2)isActivated_2 = true;
+            else isActivated_2 = false;
             break;
         case '3':
-            if(isActivated_3 == false){
-                isActivated_3 = true;
-                mode = '3';
-            }else{
-                isActivated_3 = false;
-            }
-            break;
-        case '4':
-            mode = '4';
+            if(!isActivated_3)isActivated_3 = true;
+            else isActivated_3 = false;
             break;
         case '=':
             if(this -> levels <= 20) this->levels++;
