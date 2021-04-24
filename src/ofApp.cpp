@@ -1,11 +1,15 @@
 #include "ofApp.h"
+#include "FractalMode.h"
+#include "drawMode1.h"
+#include "drawMode2.h"
+#include "drawMode3.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    this->levels = 5;
-    isActivated_1 = false;
-	isActivated_2 = false;
-	isActivated_3 = false;
+    //this->levels = 5;
+    //isActivated_1 = false;
+	//isActivated_2 = false;
+	//isActivated_3 = false;
 }
 
 //--------------------------------------------------------------
@@ -20,6 +24,8 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
+    //FractalMode* mode_1 = new drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
+
     if(isActivated_1 && !isActivated_2 && !isActivated_3){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
 
@@ -56,6 +62,7 @@ void ofApp::draw(){
     
         
 }
+/*
 void ofApp::drawMode1(int x, int y, int n){
 
     levelsColor(n);
@@ -111,6 +118,7 @@ void ofApp::levelsColor(int l){
     else if(l%5 == 3)ofSetColor(0,0,255);
     else if(l%5 == 4)ofSetColor(255,255,0);
 }
+*/
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
