@@ -30,28 +30,29 @@ void ofApp::draw(){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
 
     }
-    else if(isActivated_2 && !isActivated_1 && !isActivated_3){
+    if(isActivated_2 && !isActivated_1 && !isActivated_3){
         drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
         
     }
-    else if(isActivated_3 && !isActivated_1 && !isActivated_2) {
+    if(isActivated_3 && !isActivated_1 && !isActivated_2) {
         drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
 
     }
-    else if(isActivated_1 && isActivated_2 && !isActivated_3){
+    if(isActivated_1 && isActivated_2 && !isActivated_3){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
         drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
+
     }
-    else if(isActivated_1 && isActivated_3 && !isActivated_2){
+    if(isActivated_1 && !isActivated_2 && isActivated_3){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
         drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
     }
-    else if(isActivated_2 && isActivated_3 && !isActivated_1){
+    if(!isActivated_1 && isActivated_2 && isActivated_3){
         drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
         drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
     }
-    else if(isActivated_1 && isActivated_2 && isActivated_3){
-        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this->levels);
+    if(isActivated_1 && isActivated_2 && isActivated_3){
+        drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
         drawMode2(200, this -> levels, ofGetWidth()/2, ofGetHeight()-50, 30);
         drawMode3(ofGetWidth() / 3 - 20, 10, ofGetHeight() / 2, this -> levels);
     }
@@ -67,7 +68,7 @@ void ofApp::drawMode1(int x, int y, int n){
 
     levelsColor(n);
     if(n!=0){
-        ofDrawCircle(x, y, 100);
+        ofDrawCircle(x, y, n * 20);
         drawMode1(x+100, y, n-1);
         drawMode1(x-100, y, n-1);
         drawMode1(x, y+100, n-1);
@@ -112,10 +113,10 @@ void ofApp::drawMode3(float x, float y, float size, int n){
 }
 
 void ofApp::levelsColor(int l){
-    if(l%5 == 0)ofSetColor(255,255,255);
+    if(l%5 == 0)ofSetColor(190,150,255);
     else if(l%5 == 1)ofSetColor(255,0,0);
     else if(l%5 == 2)ofSetColor(0,255,0);
-    else if(l%5 == 3)ofSetColor(0,0,255);
+    else if(l%5 == 3)ofSetColor(50,255,255);
     else if(l%5 == 4)ofSetColor(255,255,0);
 }
 */
@@ -125,32 +126,16 @@ void ofApp::keyPressed(int key){
     // This method is called automatically when any key is pressed
     switch(key){
         case '1':
-
-            if(isActivated_1 == false){
-                isActivated_1 = true;
-                mode = '1';
-            }else{
-                isActivated_1 = false;
-            }
+            if(!isActivated_1)isActivated_1 = true;
+            else isActivated_1 = false;
             break;
         case '2':
-            if(isActivated_2 == false){
-                isActivated_2 = true;
-                mode = '2';
-            }else{
-                isActivated_2 = false;
-            }
+            if(!isActivated_2)isActivated_2 = true;
+            else isActivated_2 = false;
             break;
         case '3':
-            if(isActivated_3 == false){
-                isActivated_3 = true;
-                mode = '3';
-            }else{
-                isActivated_3 = false;
-            }
-            break;
-        case '4':
-            mode = '4';
+            if(!isActivated_3)isActivated_3 = true;
+            else isActivated_3 = false;
             break;
         case '=':
             if(this -> levels <= 20) this->levels++;
