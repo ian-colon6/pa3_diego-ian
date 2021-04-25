@@ -1,6 +1,10 @@
 #pragma once
-#include "ofApp.h"
 #include "drawMode3.h"
+
+drawMode3::drawMode3(){
+
+    this->isActive_3 = false;
+}
 
 void drawMode3::setActive(bool activated){
 
@@ -21,7 +25,12 @@ void drawMode3::levelsColor(int levels){
     else if(levels%5 == 4)ofSetColor(255,255,0);
 }
 
-void drawMode3::draw(float x, float y, float size, int n){
+void drawMode3::draw(int n){
+
+    drawHelper3(x, y, size, n);    
+}
+
+void drawMode3::drawHelper3(float x, float y, float size, int n){
 
     levelsColor(n);
     if(n == 0) {
@@ -34,7 +43,7 @@ void drawMode3::draw(float x, float y, float size, int n){
 
     ofDrawTriangle(a, b, c);
 
-    draw(x, y, size / 2, n - 1);
-    draw((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
-    draw((a.x + c.x) / 2, (a.y + c.y) / 2, size / 2, n - 1);
+    drawHelper3(x, y, size / 2, n - 1);
+    drawHelper3((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
+    drawHelper3((a.x + c.x) / 2, (a.y + c.y) / 2, size / 2, n - 1);
 }
