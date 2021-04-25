@@ -1,6 +1,12 @@
 #pragma once
-#include "ofApp.h"
+
 #include "drawMode2.h"
+
+
+drawMode2::drawMode2(){
+
+    this->isActive_2 = false;
+}
 
 void drawMode2::setActive(bool activated){
 
@@ -21,7 +27,12 @@ void drawMode2::levelsColor(int levels){
     else if(levels%5 == 4)ofSetColor(255,255,0);
 }
 
-void drawMode2::draw(int length, int n, int x, int y, int d){
+void drawMode2::draw(int levels){
+
+    drawHelper2(length, levels, x, y, deg);    
+}
+
+void drawMode2::drawHelper2(int length, int n, int x, int y, int d){
 
     levelsColor(n);
     if(n != 0){
@@ -35,7 +46,7 @@ void drawMode2::draw(int length, int n, int x, int y, int d){
         ofDrawLine(x, y-length, rightBranchX, rightBranchY);
         ofDrawLine(x,y-length, leftBranchX, leftBranchY);
 
-        draw(length/2, n-1,rightBranchX,rightBranchY, 30);
-        draw(length/2,n-1,leftBranchX,leftBranchY, 30);
+        drawHelper2(length/2, n-1,rightBranchX,rightBranchY, 30);
+        drawHelper2(length/2,n-1,leftBranchX,leftBranchY, 30);
     }
 }

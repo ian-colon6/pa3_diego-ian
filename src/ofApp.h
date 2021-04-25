@@ -2,6 +2,10 @@
 #include<cmath>
 #include <vector>
 #include "FractalMode.h"
+#include "zeroMode.h"
+#include "drawMode1.h"
+#include "drawMode2.h"
+#include "drawMode3.h"
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
@@ -9,10 +13,11 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-
+	/*
 		void drawMode1(int x, int y, int n);
 		void drawMode2(int length, int n, int x, int y, int d);
 		void drawMode3(float x, float y, float size, int n);
+	*/
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y);
@@ -32,4 +37,9 @@ class ofApp : public ofBaseApp{
 		bool isActivated_2;
 		bool isActivated_3;
 		std::vector<FractalMode*> Frac_modes;
+		drawMode1 *m1;
+		drawMode2 *m2;
+		drawMode3 *m3;
+		zeroMode *m0;
+		FractalMode *currentMode;
 };

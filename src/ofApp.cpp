@@ -1,11 +1,15 @@
 #include "ofApp.h"
-#include "FractalMode.h"
-#include "drawMode1.h"
-#include "drawMode2.h"
-#include "drawMode3.h"
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    m0 = new zeroMode();
+    m1 = new drawMode1();
+    m2 = new drawMode2();
+    m3 = new drawMode3();
+    currentMode = m0;
+    Frac_modes = {m0, m1, m2, m3};
+
     //this->levels = 5;
     //isActivated_1 = false;
 	//isActivated_2 = false;
@@ -24,8 +28,14 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
-    //FractalMode* mode_1 = new drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
+    for(int i = 0; i < Frac_modes.size(); i++){
 
+        if(Frac_modes[i]->getActive()){ Frac_modes[i]->draw(5);};
+
+        
+    }
+
+/*
     if(isActivated_1 && !isActivated_2 && !isActivated_3){
         drawMode1(ofGetWidth()/2, ofGetHeight()/2, this -> levels);
 
@@ -59,7 +69,7 @@ void ofApp::draw(){
         ofSetColor(256);
         ofDrawBitmapString("Press any number from 1-3", ofGetWidth()/2 -100, ofGetHeight()/2);
     }
-    
+    */
         
 }
 /*
@@ -126,27 +136,24 @@ void ofApp::keyPressed(int key){
     switch(key){
         case '1':
 
-            if(isActivated_1 == false){
-                isActivated_1 = true;
-                mode = '1';
+            if(m1->getActive() == false){
+                m1->setActive(true);
             }else{
-                isActivated_1 = false;
+                m1->setActive(false);
             }
             break;
         case '2':
-            if(isActivated_2 == false){
-                isActivated_2 = true;
-                mode = '2';
+            if(m2->getActive() == false){
+                m2->setActive(true);
             }else{
-                isActivated_2 = false;
+                m2->setActive(false);
             }
             break;
         case '3':
-            if(isActivated_3 == false){
-                isActivated_3 = true;
-                mode = '3';
+            if(m3->getActive() == false){
+                m3->setActive(true);
             }else{
-                isActivated_3 = false;
+                m3->setActive(false);
             }
             break;
         case '4':
