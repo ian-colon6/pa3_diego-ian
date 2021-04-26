@@ -7,7 +7,7 @@ void ofApp::setup(){
     m1 = new drawMode1();
     m2 = new drawMode2();
     m3 = new drawMode3();
-    Frac_modes = {m0, m1, m2, m3};
+    Frac_modes = {m1, m2, m3};
 
     this->levels = 5;
     //isActivated_1 = false;
@@ -27,12 +27,10 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
-    if(m1->getActive()) m1->draw(this->levels);
-    if(m2->getActive()) m2->draw(this->levels);
-    if(m3->getActive()) m3->draw(this->levels);
-    if(!m1->getActive() && !m2->getActive() && !m3->getActive()){
-        m0->draw(0);
-    } 
+    for(int i = 0;i<Frac_modes.size();i++){
+        if(Frac_modes[i]->getActive())Frac_modes[i]->draw(this->levels);
+        else m0->draw(0);
+    }
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
