@@ -18,13 +18,12 @@ bool drawMode2::getActive(){
     return this->isActive_2;
 }
 
-void drawMode2::levelsColor(int levels){
-
-    if(levels%5 == 0)ofSetColor(255,255,255);
-    else if(levels%5 == 1)ofSetColor(255,0,0);
-    else if(levels%5 == 2)ofSetColor(0,255,0);
-    else if(levels%5 == 3)ofSetColor(0,0,255);
-    else if(levels%5 == 4)ofSetColor(255,255,0);
+void drawMode2::levelsColor(int l){
+    if(l%5 == 0)ofSetColor(190,150,255);
+    else if(l%5 == 1)ofSetColor(255,0,0);
+    else if(l%5 == 2)ofSetColor(0,255,0);
+    else if(l%5 == 3)ofSetColor(50,255,255);
+    else if(l%5 == 4)ofSetColor(255,255,0);
 }
 
 void drawMode2::draw(int levels){

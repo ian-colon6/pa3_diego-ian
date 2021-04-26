@@ -11,7 +11,6 @@ class drawMode2 : public FractalMode {
         int deg = 30;
     
     public:
-        int levels = 5;
         drawMode2();
         void setActive(bool activ);
         bool getActive();

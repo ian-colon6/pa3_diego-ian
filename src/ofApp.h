@@ -31,15 +31,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		void levelsColor(int l);
 	private:
-		char mode = '1';
 		int levels;
-		bool isActivated_1;
-		bool isActivated_2;
-		bool isActivated_3;
 		std::vector<FractalMode*> Frac_modes;
 		drawMode1 *m1;
 		drawMode2 *m2;
 		drawMode3 *m3;
 		zeroMode *m0;
-		FractalMode *currentMode;
 };

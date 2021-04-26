@@ -9,7 +9,6 @@ class drawMode1 : public FractalMode {
         int y = ofGetHeight()/2;
     
     public:
-        int levels = 5;
         drawMode1();
         void setActive(bool activ);
         bool getActive();

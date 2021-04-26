@@ -4,7 +4,6 @@ class FractalMode{
 private:
     bool active;
 public:
-    int levels;
     FractalMode(){}
     virtual void setActive(bool b) = 0;
     virtual bool getActive() = 0;
