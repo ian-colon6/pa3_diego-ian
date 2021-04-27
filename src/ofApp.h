@@ -7,6 +7,7 @@
 #include "drawMode2.h"
 #include "drawMode3.h"
 #include "ofMain.h"
+#include "drawMode4.h"
 
 class ofApp : public ofBaseApp{
 	public:
@@ -37,4 +38,6 @@ class ofApp : public ofBaseApp{
 		drawMode2 *m2;
 		drawMode3 *m3;
 		zeroMode *m0;
+		drawMode4 *m4;
+		int modesActive;
 };
