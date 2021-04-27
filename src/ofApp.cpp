@@ -11,7 +11,7 @@ void ofApp::setup(){
     Frac_modes = {m1, m2, m3, m4};
     modesActive = 0;
 
-    this->levels = 5;
+    this->levels = 2;
     //isActivated_1 = false;
 	//isActivated_2 = false;
 	//isActivated_3 = false;
@@ -22,6 +22,44 @@ void ofApp::update(){
     /* The update method is called muliple times per second
     It's in charge of updating variables and the logic of our app */
     ofSetBackgroundColor(0,0,0);
+    if(isAnim){
+        Animation(0, 5);
+    }
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::Animation(int l_limit, int u_limit){
+    
+    ofSetFrameRate(5);
+    /*
+    timer++;
+    if(timer > l_limit){
+        this->levels++;
+        timer = 0;
+        
+    }
+    if(this->levels == u_limit){
+        this->levels--;
+    }
+    */
+    if(isReversed){
+        if(this->levels == l_limit){
+            isReversed = false;
+        }
+        else{
+            this->levels--;
+        }
+    }
+    else{
+        if(this->levels == u_limit){
+            isReversed = true;
+        }
+        else{
+            this->levels++;
+        }
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -61,6 +99,10 @@ void ofApp::keyPressed(int key){
             break;
         case '-':
             if(this->levels >= 1) this->levels--;
+            break;
+        case ' ':
+            if(!isAnim) { isAnim = true; this->levels = 0; isReversed = false;}
+            else { isAnim = false;}
             break;
     }
 }

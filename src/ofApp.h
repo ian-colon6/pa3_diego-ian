@@ -31,6 +31,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		void levelsColor(int l);
+		void Animation(int low_limit, int up_limit);
 	private:
 		int levels;
 		std::vector<FractalMode*> Frac_modes;
@@ -40,4 +41,7 @@ class ofApp : public ofBaseApp{
 		zeroMode *m0;
 		drawMode4 *m4;
 		int modesActive;
+		int timer = 15*10;
+		bool isAnim = false;
+		bool isReversed;
 };
