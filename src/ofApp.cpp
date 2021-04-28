@@ -8,13 +8,10 @@ void ofApp::setup(){
     m2 = new drawMode2();
     m3 = new drawMode3();
     m4 = new drawMode4();
-    Frac_modes = {m1, m2, m3, m4};
-    modesActive = 0;
+    Frac_modes = {m1, m2, m3, m4}; //Vector containing initializations of the modes
+    modesActive = 0; // How many modes are active 
 
-    this->levels = 2;
-    //isActivated_1 = false;
-	//isActivated_2 = false;
-	//isActivated_3 = false;
+    this->levels = 2; //How many recursion levels are active
 }
 
 //--------------------------------------------------------------
@@ -22,6 +19,8 @@ void ofApp::update(){
     /* The update method is called muliple times per second
     It's in charge of updating variables and the logic of our app */
     ofSetBackgroundColor(0,0,0);
+
+    //if loop to check if the animation is Active
     if(isAnim){
         Animation(0, 5);
     }
@@ -29,6 +28,7 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
+//Animation feature
 void ofApp::Animation(int l_limit, int u_limit){
     
     ofSetFrameRate(5);
@@ -56,6 +56,8 @@ void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
     ofNoFill();
+    
+    //For loop for the vector to check if any mode is active
     for(int i = 0;i<Frac_modes.size();i++){
         if(Frac_modes[i]->getActive()){
             Frac_modes[i]->draw(this->levels);
