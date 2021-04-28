@@ -32,17 +32,6 @@ void ofApp::update(){
 void ofApp::Animation(int l_limit, int u_limit){
     
     ofSetFrameRate(5);
-    /*
-    timer++;
-    if(timer > l_limit){
-        this->levels++;
-        timer = 0;
-        
-    }
-    if(this->levels == u_limit){
-        this->levels--;
-    }
-    */
     if(isReversed){
         if(this->levels == l_limit){
             isReversed = false;
@@ -84,7 +73,7 @@ void ofApp::keyPressed(int key){
             break;
         case '2':
             if(m2->getActive()){ m2->setActive(false); modesActive--;}
-            else {m2->setActive(true);modesActive++;}
+            else {m2->setActive(true); modesActive++; m2->deg = ofRandom(30,70);}
             break;
         case '3':
             if(m3->getActive()) {m3->setActive(false); modesActive--;}
@@ -102,7 +91,7 @@ void ofApp::keyPressed(int key){
             break;
         case ' ':
             if(!isAnim) { isAnim = true; this->levels = 0; isReversed = false;}
-            else { isAnim = false;}
+            else {isAnim = false;  ofSetFrameRate(60);}
             break;
     }
 }

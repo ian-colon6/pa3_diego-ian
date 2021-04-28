@@ -8,7 +8,6 @@ class drawMode2 : public FractalMode {
         int x = ofGetWidth()/2;
         int y = ofGetHeight() - 50;
         int length = 200;
-        int deg = 30;
     
     public:
         drawMode2();
@@ -17,5 +16,6 @@ class drawMode2 : public FractalMode {
         void draw(int);
         void drawHelper2(int, int, int, int, int);
         void levelsColor(int);
+        int deg;
 
 };
