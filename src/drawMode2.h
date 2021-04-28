@@ -17,5 +17,4 @@ class drawMode2 : public FractalMode {
         void drawHelper2(int, int, int, int, int);
         void levelsColor(int);
         int deg;
-
 };

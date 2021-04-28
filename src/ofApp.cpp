@@ -3,6 +3,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    //Instantiated subclasses are stored in Frac_modes
     m0 = new zeroMode();
     m1 = new drawMode1();
     m2 = new drawMode2();
@@ -22,6 +23,7 @@ void ofApp::update(){
 
     //if loop to check if the animation is Active
     if(isAnim){
+        //With the established bool Animation() is called with a lower and upper limit
         Animation(0, 5);
     }
     
@@ -31,6 +33,8 @@ void ofApp::update(){
 //Animation feature
 void ofApp::Animation(int l_limit, int u_limit){
     
+    //Lowered frame rate so animation could be appreciated better
+    //if isReversed is false it increases levels, else it lowers levels
     ofSetFrameRate(5);
     if(isReversed){
         if(this->levels == l_limit){
@@ -55,6 +59,9 @@ void ofApp::Animation(int l_limit, int u_limit){
 void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
+
+    //for loop iterates through each object in Frac_modes and checks if they are active or not
+    //If none of them are zeroMode->draw() is called instead
     ofNoFill();
     
     //For loop for the vector to check if any mode is active
