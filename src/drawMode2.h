@@ -17,5 +17,7 @@ class drawMode2 : public FractalMode {
         void drawHelper2(int, int, int, int, int);
         void levelsColor(int);
         int deg;
-
+        int angle1 = ofRandom(30,70);
+        int angle2 = ofRandom(30,70);
+        int angle3 = ofRandom(30,70);
 };

@@ -27,6 +27,10 @@ void drawMode2::levelsColor(int l){
 }
 
 void drawMode2::draw(int levels){
+    std::vector<int> angles = {angle1};
+    for(int i = 0; i < angles.size(); i++){
+        deg = angles[0];
+    }
     drawHelper2(length, levels, x, y, deg);    
 }
 
@@ -44,7 +48,7 @@ void drawMode2::drawHelper2(int length, int n, int x, int y, int d){
         ofDrawLine(x, y-length, rightBranchX, rightBranchY);
         ofDrawLine(x,y-length, leftBranchX, leftBranchY);
 
-        drawHelper2(length/2, n-1,rightBranchX,rightBranchY, deg);
-        drawHelper2(length/2,n-1,leftBranchX,leftBranchY, deg);
+        drawHelper2(length/2, n-1,rightBranchX,rightBranchY, angle2);
+        drawHelper2(length/2,n-1,leftBranchX,leftBranchY, angle3);
     }
 }

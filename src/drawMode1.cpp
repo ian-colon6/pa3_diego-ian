@@ -16,7 +16,7 @@ bool drawMode1::getActive(){
 
     return this->isActive_1;
 }
-
+//draws each recursion call (level) with a different color
 void drawMode1::levelsColor(int l){
     if(l%5 == 0)ofSetColor(190,150,255);
     else if(l%5 == 1)ofSetColor(255,0,0);

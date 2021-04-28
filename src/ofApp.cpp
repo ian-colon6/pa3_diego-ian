@@ -3,18 +3,18 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    //instantiated subclasses are stored in Frac_modes
     m0 = new zeroMode();
     m1 = new drawMode1();
     m2 = new drawMode2();
     m3 = new drawMode3();
     m4 = new drawMode4();
     Frac_modes = {m1, m2, m3, m4};
+    //Keeps track of active modes
     modesActive = 0;
 
+    //initialized levels
     this->levels = 2;
-    //isActivated_1 = false;
-	//isActivated_2 = false;
-	//isActivated_3 = false;
 }
 
 //--------------------------------------------------------------
@@ -23,6 +23,7 @@ void ofApp::update(){
     It's in charge of updating variables and the logic of our app */
     ofSetBackgroundColor(0,0,0);
     if(isAnim){
+        //With the established bool Animation() is called with a lower and upper limit
         Animation(0, 5);
     }
     
@@ -31,6 +32,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::Animation(int l_limit, int u_limit){
     
+    //Lowered frame rate so animation could be appreciated better
+    //if isReversed is false it increases levels, else it lowers levels
     ofSetFrameRate(5);
     if(isReversed){
         if(this->levels == l_limit){
@@ -55,6 +58,9 @@ void ofApp::Animation(int l_limit, int u_limit){
 void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
+
+    //for loop iterates through each object in Frac_modes and checks if they are active or not
+    //If none of them are zeroMode->draw() is called instead
     ofNoFill();
     for(int i = 0;i<Frac_modes.size();i++){
         if(Frac_modes[i]->getActive()){
@@ -73,7 +79,7 @@ void ofApp::keyPressed(int key){
             break;
         case '2':
             if(m2->getActive()){ m2->setActive(false); modesActive--;}
-            else {m2->setActive(true); modesActive++; m2->deg = ofRandom(30,70);}
+            else {m2->setActive(true); modesActive++; }//m2->deg = ofRandom(30,70);}
             break;
         case '3':
             if(m3->getActive()) {m3->setActive(false); modesActive--;}
