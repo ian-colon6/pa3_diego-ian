@@ -38,4 +38,5 @@ class ofApp : public ofBaseApp{
 		int modesActive;
 		bool isAnim = false;
 		bool isReversed;
+		ofSoundPlayer ST_music;
 };
