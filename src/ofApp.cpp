@@ -76,6 +76,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     // This method is called automatically when any key is pressed
+    // We do not own any of the music in this project
+    // Audio that was downloaded https://www.youtube.com/watch?v=bLjllIsGQ_Y
     switch(key){
         case '1':
             if(m1->getActive()) {m1->setActive(false); modesActive--;}
