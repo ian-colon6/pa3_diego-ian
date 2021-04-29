@@ -82,7 +82,7 @@ void ofApp::keyPressed(int key){
             break;
         case '2':
             if(m2->getActive()){ m2->setActive(false); modesActive--;}
-            else {m2->setActive(true); modesActive++; m2->deg = ofRandom(30,70);}
+            else {m2->setActive(true); modesActive++;}
             break;
         case '3':
             if(m3->getActive()) {m3->setActive(false); modesActive--;}
