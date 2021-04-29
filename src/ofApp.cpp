@@ -24,6 +24,7 @@ void ofApp::update(){
     //if loop to check if the animation is Active
     if(isAnim){
         //With the established bool Animation() is called with a lower and upper limit
+        ST_music.stop();
         Animation(0, 5);
     }
     
@@ -90,7 +91,14 @@ void ofApp::keyPressed(int key){
             break;
         case '4':
             if(m4->getActive()) {m4->setActive(false); modesActive--;}
-            else {m4->setActive(true); modesActive++;}
+            else{
+                m4->setActive(true);
+                modesActive++;
+                ST_music.loadSound("music/Stranger_Things.wav");
+                ST_music.setVolume(1);
+                ST_music.setLoop(true);
+                ST_music.play();
+            }
             break;
         case '=':
             if(this->levels <= 10) this->levels++;
